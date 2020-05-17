@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Referencia video de clase y youtube
+//Autor: Bryann Alfaro
+
 public class EnemyNav : MonoBehaviour
 {
-    public Transform pos1;
-    public Transform pos2;
-    public Transform pos3;
+    public Transform posicionInicial;
+    public Transform posicion2;
+    public Transform posicion3;
 
-    private NavMeshAgent agent;
+    private NavMeshAgent agenteEnemigo;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        agenteEnemigo = gameObject.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -23,19 +26,20 @@ public class EnemyNav : MonoBehaviour
         
     }
 
+    //Se establecen los moivimientos del enemigo entre los puntos
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "1")
         {
-            agent.SetDestination(pos2.position);
+            agenteEnemigo.SetDestination(posicion2.position);
         }
         if (other.tag == "2")
         {
-            agent.SetDestination(pos3.position);
+            agenteEnemigo.SetDestination(posicion3.position);
         }
         if (other.tag == "3")
         {
-            agent.SetDestination(pos1.position);
+            agenteEnemigo.SetDestination(posicionInicial.position);
         }
 
     }

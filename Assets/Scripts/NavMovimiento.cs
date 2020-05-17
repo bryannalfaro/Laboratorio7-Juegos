@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Referencia video de clase
+//Autor: Bryann Alfaro
+
 public class NavMovimiento : MonoBehaviour
 {
     public GameObject wp;
-    private NavMeshAgent agent;
+    private NavMeshAgent agenteJugador;
 
     // Start is called before the first frame update
     void Start()
     {
         
-        agent = GetComponent<NavMeshAgent>();
+        agenteJugador = GetComponent<NavMeshAgent>();
         
     }
 
@@ -27,7 +30,7 @@ public class NavMovimiento : MonoBehaviour
 
             if (Physics.Raycast(myRay, out hitInfo) && NavMesh.SamplePosition(hitInfo.point, out navHitInfo, 0.1f, NavMesh.AllAreas))
             {
-                agent.SetDestination(navHitInfo.position);            }
+                agenteJugador.SetDestination(navHitInfo.position);            }
         }
     }
 
